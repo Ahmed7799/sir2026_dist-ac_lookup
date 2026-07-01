@@ -511,11 +511,11 @@ function scrollInputIntoView(el) {
         async src="//gc.zgo.at/count.js"></script>
 <script>
 // Fetch visit count from GoatCounter API and display in footer
-fetch('https://countmysite.goatcounter.com/counter//.json')
+fetch('https://countmysite.goatcounter.com/counter/TOTAL.json')
   .then(r => r.json())
   .then(d => {
     const el = document.getElementById('visitCount');
-    if (el && d.count) el.textContent = d.count.toLocaleString();
+    if (el && d.count) el.textContent = Number(d.count).toLocaleString();
   })
   .catch(() => {
     const el = document.getElementById('visitCount');
