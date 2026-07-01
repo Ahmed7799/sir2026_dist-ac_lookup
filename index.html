@@ -310,7 +310,10 @@
   <footer>
     Unofficial, independent, non-commercial community tool · Built to support SIR 2026 BLOs &amp; volunteers<br>
     Data sourced from public CEO AP &amp; CEO Telangana portals · Not affiliated with ECI or any Government<br>
-    Always cross-check on the official portal before final submission
+    Always cross-check on the official portal before final submission<br><br>
+    <span style="font-size:12px; color: var(--muted);">
+      👥 This page has been visited <span id="visitCount">...</span> times
+    </span>
   </footer>
 
 </div>
@@ -503,6 +506,21 @@ function scrollInputIntoView(el) {
 [qDistrict, qState].forEach(el => {
   el.addEventListener('focus', () => scrollInputIntoView(el));
 });
+</script>
+<script data-goatcounter="https://countmysite.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+// Fetch visit count from GoatCounter API and display in footer
+fetch('https://countmysite.goatcounter.com/counter//.json')
+  .then(r => r.json())
+  .then(d => {
+    const el = document.getElementById('visitCount');
+    if (el && d.count) el.textContent = d.count.toLocaleString();
+  })
+  .catch(() => {
+    const el = document.getElementById('visitCount');
+    if (el) el.textContent = '—';
+  });
 </script>
 </body>
 </html>
