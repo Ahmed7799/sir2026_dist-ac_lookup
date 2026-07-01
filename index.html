@@ -510,12 +510,12 @@ function scrollInputIntoView(el) {
 <script data-goatcounter="https://countmysite.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <script>
-// Fetch visit count from GoatCounter API and display in footer
-fetch('https://countmysite.goatcounter.com/counter/TOTAL.json')
+// Fetch visit count from GoatCounter - exact path confirmed from dashboard
+fetch('https://countmysite.goatcounter.com/counter/%2Fsir2026_dist-ac_lookup.json')
   .then(r => r.json())
   .then(d => {
     const el = document.getElementById('visitCount');
-    if (el && d.count) el.textContent = Number(d.count).toLocaleString();
+    if (el && d.count !== undefined) el.textContent = Number(d.count).toLocaleString();
   })
   .catch(() => {
     const el = document.getElementById('visitCount');
